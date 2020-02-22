@@ -1,0 +1,22 @@
+dist: bionic
+language: php
+sudo: false
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.4
+
+before_install:
+    - phpenv config-rm xdebug.ini
+
+install:
+    - composer update --prefer-dist --no-interaction
+
+script:
+    - composer validate --strict --no-check-lock
+    - ./vendor/bin/phpspec run --no-ansi --format=dot
+    - ./vendor/bin/phpstan analyse

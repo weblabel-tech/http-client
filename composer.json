@@ -1,0 +1,29 @@
+{
+    "name": "weblabel/http-client",
+    "description": "HTTP client wrapper",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Adam Kowalski",
+            "email": "adam.kowalski@weblabel.pl"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^6.1",
+        "phpstan/phpstan": "^0.12.11",
+        "nyholm/psr7": "^1.2",
+        "symfony/http-client": "^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Weblabel\\HttpClient\\": "src/"
+        }
+    }
+}

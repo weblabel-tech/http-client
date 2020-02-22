@@ -1,0 +1,4 @@
+suites:
+    default:
+        namespace: Weblabel\HttpClient
+        psr4_prefix: Weblabel\HttpClient
