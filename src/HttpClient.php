@@ -15,7 +15,7 @@ final class HttpClient implements ClientInterface
     /** @var RequestMiddleware[] */
     private array $requestMiddleware = [];
 
-    public function __construct(ClientInterface $client, array $requestMiddleware = [])
+    public function __construct(ClientInterface $client, iterable $requestMiddleware = [])
     {
         $this->client = $client;
 
