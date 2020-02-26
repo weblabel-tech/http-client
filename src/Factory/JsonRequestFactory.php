@@ -45,7 +45,7 @@ final class JsonRequestFactory implements RequestFactory
 
         if (!empty($headers)) {
             foreach ($headers as $header => $value) {
-                $request = $request->withHeader((string)$header, $value);
+                $request = $request->withHeader((string) $header, $value);
             }
         }
 
