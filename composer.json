@@ -18,6 +18,7 @@
     "require-dev": {
         "phpspec/phpspec": "^6.1",
         "phpstan/phpstan": "^0.12.11",
+        "friendsofphp/php-cs-fixer": "^2.16@dev",
         "nyholm/psr7": "^1.2",
         "symfony/http-client": "^5.0"
     },

@@ -1,6 +1,8 @@
 HTTP Client
 ============
+
 [![Build Status](https://travis-ci.org/weblabel-tech/http-client.svg?branch=master)](https://travis-ci.org/weblabel-tech/http-client)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/weblabel-tech/http-client/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/weblabel-tech/http-client/?branch=master)
 
 Installation
 ============

@@ -1,11 +1,12 @@
+os: linux
 dist: bionic
 language: php
-sudo: false
+
 cache:
     directories:
         - $HOME/.composer/cache/files
 
-matrix:
+jobs:
     fast_finish: true
     include:
         - php: 7.4
@@ -18,5 +19,6 @@ install:
 
 script:
     - composer validate --strict --no-check-lock
-    - ./vendor/bin/phpspec run --no-ansi --format=dot
+    - ./vendor/bin/php-cs-fixer fix --dry-run
     - ./vendor/bin/phpstan analyse
+    - ./vendor/bin/phpspec run --no-ansi --format=dot
