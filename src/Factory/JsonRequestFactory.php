@@ -119,10 +119,6 @@ final class JsonRequestFactory implements RequestFactory
      */
     private function validateBody($body): void
     {
-        if (null === $body) {
-            return;
-        }
-
         if (!$body instanceof \JsonSerializable && !$body instanceof \stdClass && !\is_array($body)) {
             throw InvalidBodyException::forInvalidBody();
         }

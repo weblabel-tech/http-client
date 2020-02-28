@@ -18,6 +18,16 @@ class HttpExceptionTraitTest extends TestCase
         self::$psrFactory = new Psr17Factory();
     }
 
+    private static function getMappedResponseCodes(array $responseCodes): array
+    {
+        return \array_map(
+            static function (int $responseCode) {
+                return [$responseCode];
+            },
+            $responseCodes
+        );
+    }
+
     /**
      * @dataProvider errorCodeDataProvider
      */
@@ -30,15 +40,25 @@ class HttpExceptionTraitTest extends TestCase
         $trait->throwExceptionOnFailure(self::$psrFactory->createRequest('GET', 'https://example.com'), self::$psrFactory->createResponse($responseCode));
     }
 
+    /**
+     * @dataProvider successCodeDataProvider
+     */
+    public function test_throwing_exception_on_success_response_code(int $responseCode)
+    {
+        /** @var HttpExceptionTrait $trait */
+        $trait = $this->getMockForTrait(HttpExceptionTrait::class);
+        $trait->throwExceptionOnFailure(self::$psrFactory->createRequest('GET', 'https://example.com'), self::$psrFactory->createResponse($responseCode));
+
+        self::assertTrue(true);
+    }
+
     public function errorCodeDataProvider()
     {
-        $data = \range(400, 599);
+        return self::getMappedResponseCodes(\range(400, 599));
+    }
 
-        return \array_map(
-            static function (int $errorCode) {
-                return [$errorCode];
-            },
-            $data
-        );
+    public function successCodeDataProvider()
+    {
+        return self::getMappedResponseCodes(\range(100, 399));
     }
 }
