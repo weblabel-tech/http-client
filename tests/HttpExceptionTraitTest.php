@@ -11,7 +11,7 @@ use Weblabel\HttpClient\HttpExceptionTrait;
 
 class HttpExceptionTraitTest extends TestCase
 {
-    private static $psrFactory;
+    private static Psr17Factory $psrFactory;
 
     public static function setUpBeforeClass(): void
     {

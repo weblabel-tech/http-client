@@ -11,9 +11,6 @@ jobs:
     include:
         - php: 7.4
 
-before_install:
-    - phpenv config-rm xdebug.ini
-
 install:
     - composer update --prefer-dist --no-interaction
 
@@ -21,5 +18,8 @@ script:
     - composer validate --strict --no-check-lock
     - ./vendor/bin/php-cs-fixer fix --dry-run
     - ./vendor/bin/phpstan analyse
-    - ./vendor/bin/phpspec run --no-ansi --format=dot
     - ./vendor/bin/phpunit --coverage-clover=build/clover.xml
+
+after_success:
+    - wget https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover build/clover.xml

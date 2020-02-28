@@ -16,7 +16,6 @@
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
-        "phpspec/phpspec": "^6.1",
         "phpunit/phpunit": "^9.0",
         "phpstan/phpstan": "^0.12.11",
         "friendsofphp/php-cs-fixer": "^2.16@dev",
