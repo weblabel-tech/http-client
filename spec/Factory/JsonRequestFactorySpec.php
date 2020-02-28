@@ -32,15 +32,6 @@ class JsonRequestFactorySpec extends ObjectBehavior
         $request->getHeaderLine('Content-Type')->shouldBe('application/json');
     }
 
-    public function it_allows_to_create_request_without_base_uri()
-    {
-        $psrFactory = new Psr17Factory();
-        $this->beConstructedWith($psrFactory, $psrFactory);
-
-        $request = $this->createRequest('GET', '/');
-        $request->getUri()->__toString()->shouldBe('/');
-    }
-
     public function it_allows_to_create_request_with_query_parameters()
     {
         $psrFactory = new Psr17Factory();
