@@ -42,7 +42,12 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install composer dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Skip PHP-CS Fixer environment check for PHP 8.1
+        run: |
+          echo "PHP_CS_FIXER_IGNORE_ENV=1" >> $GITHUB_ENV
+        if: ${{ matrix.php-versions == '8.1' }}
 
       - name: Run PHP-CS-Fixer
         run: ./vendor/bin/php-cs-fixer fix --dry-run
