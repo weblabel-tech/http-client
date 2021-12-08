@@ -1,6 +1,8 @@
 HTTP Client
 ============
 
+[![Github CI](https://github.com/weblabel-tech/http-client/actions/workflows/testsuite.yml/badge.svg)](https://github.com/weblabel-tech/http-client/actions/workflows/testsuite.yml)
+
 Installation
 ============
 
