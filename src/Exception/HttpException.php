@@ -18,7 +18,7 @@ class HttpException extends RuntimeException
         $this->request = $request;
         $this->response = $response;
 
-        parent::__construct(\sprintf('%s returned %d HTTP code', (string) $request->getUri(), $response->getStatusCode()), $response->getStatusCode());
+        parent::__construct(sprintf('%s returned %d HTTP code', (string) $request->getUri(), $response->getStatusCode()), $response->getStatusCode());
     }
 
     public function getRequest(): RequestInterface

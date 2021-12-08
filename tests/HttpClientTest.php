@@ -12,7 +12,7 @@ use Weblabel\HttpClient\RequestMiddleware;
 
 class HttpClientTest extends TestCase
 {
-    public function test_execution_of_injected_middleware()
+    public function testExecutionOfInjectedMiddleware()
     {
         $psrFactory = new Psr17Factory();
 

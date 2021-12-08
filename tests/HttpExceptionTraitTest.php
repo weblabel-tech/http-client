@@ -20,7 +20,7 @@ class HttpExceptionTraitTest extends TestCase
 
     private static function getMappedResponseCodes(array $responseCodes): array
     {
-        return \array_map(
+        return array_map(
             static function (int $responseCode) {
                 return [$responseCode];
             },
@@ -31,7 +31,7 @@ class HttpExceptionTraitTest extends TestCase
     /**
      * @dataProvider errorCodeDataProvider
      */
-    public function test_throwing_exception_on_error_response_code(int $responseCode)
+    public function testThrowingExceptionOnErrorResponseCode(int $responseCode)
     {
         $this->expectException(HttpException::class);
 
@@ -43,7 +43,7 @@ class HttpExceptionTraitTest extends TestCase
     /**
      * @dataProvider successCodeDataProvider
      */
-    public function test_throwing_exception_on_success_response_code(int $responseCode)
+    public function testThrowingExceptionOnSuccessResponseCode(int $responseCode)
     {
         /** @var HttpExceptionTrait $trait */
         $trait = $this->getMockForTrait(HttpExceptionTrait::class);
@@ -54,11 +54,11 @@ class HttpExceptionTraitTest extends TestCase
 
     public function errorCodeDataProvider()
     {
-        return self::getMappedResponseCodes(\range(400, 599));
+        return self::getMappedResponseCodes(range(400, 599));
     }
 
     public function successCodeDataProvider()
     {
-        return self::getMappedResponseCodes(\range(100, 399));
+        return self::getMappedResponseCodes(range(100, 399));
     }
 }

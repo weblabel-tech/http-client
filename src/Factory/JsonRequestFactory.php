@@ -39,7 +39,7 @@ final class JsonRequestFactory implements RequestFactory
         if (null !== $body) {
             $this->validateBody($body);
 
-            $stream = $this->streamFactory->createStream(\json_encode($body, \JSON_THROW_ON_ERROR));
+            $stream = $this->streamFactory->createStream(json_encode($body, \JSON_THROW_ON_ERROR));
             $request = $request->withBody($stream);
         }
 
@@ -106,7 +106,7 @@ final class JsonRequestFactory implements RequestFactory
     private function getUri(string $path, array $queryParameters): string
     {
         if (!empty($queryParameters)) {
-            $path .= '?'.\http_build_query($queryParameters);
+            $path .= '?'.http_build_query($queryParameters);
         }
 
         return $path;

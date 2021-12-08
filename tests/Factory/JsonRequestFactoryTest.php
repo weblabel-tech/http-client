@@ -20,28 +20,28 @@ class JsonRequestFactoryTest extends TestCase
         self::$jsonRequestFactory = new JsonRequestFactory($psrFactory, $psrFactory);
     }
 
-    public function test_request_creation_with_predefined_json_content_type()
+    public function testRequestCreationWithPredefinedJsonContentType()
     {
         $request = self::$jsonRequestFactory->createRequest('GET', '/');
 
         self::assertSame('application/json', $request->getHeaderLine('Content-Type'));
     }
 
-    public function test_request_creation_with_query_parameters()
+    public function testRequestCreationWithQueryParameters()
     {
         $request = self::$jsonRequestFactory->createRequest('GET', '/', ['foo' => 'bar']);
 
         self::assertSame('foo=bar', $request->getUri()->getQuery());
     }
 
-    public function test_request_creation_with_valid_body()
+    public function testRequestCreationWithValidBody()
     {
         $request = self::$jsonRequestFactory->createRequest('POST', '/', [], ['foo' => 'bar']);
 
         self::assertSame('{"foo":"bar"}', (string) $request->getBody());
     }
 
-    public function test_request_creation_with_headers()
+    public function testRequestCreationWithHeaders()
     {
         $request = self::$jsonRequestFactory->createRequest('GET', '/', [], null, ['Authorization' => 'Bearer token', 'User-Agent' => 'test']);
 
@@ -49,7 +49,7 @@ class JsonRequestFactoryTest extends TestCase
         self::assertSame('test', $request->getHeaderLine('User-Agent'));
     }
 
-    public function test_get_request_creation()
+    public function testGetRequestCreation()
     {
         $request = self::$jsonRequestFactory->get('/', ['foo' => 'bar'], ['Authorization' => 'Bearer token', 'User-Agent' => 'test']);
 
@@ -60,7 +60,7 @@ class JsonRequestFactoryTest extends TestCase
         self::assertSame('test', $request->getHeaderLine('User-Agent'));
     }
 
-    public function test_post_request_creation()
+    public function testPostRequestCreation()
     {
         $request = self::$jsonRequestFactory->post('/', ['foo' => 'bar'], ['baz' => 'qux'], ['Authorization' => 'Bearer token', 'User-Agent' => 'test']);
 
@@ -72,7 +72,7 @@ class JsonRequestFactoryTest extends TestCase
         self::assertSame('test', $request->getHeaderLine('User-Agent'));
     }
 
-    public function test_put_request_creation()
+    public function testPutRequestCreation()
     {
         $request = self::$jsonRequestFactory->put('/', ['foo' => 'bar'], ['baz' => 'qux'], ['Authorization' => 'Bearer token', 'User-Agent' => 'test']);
 
@@ -84,7 +84,7 @@ class JsonRequestFactoryTest extends TestCase
         self::assertSame('test', $request->getHeaderLine('User-Agent'));
     }
 
-    public function test_patch_request_creation()
+    public function testPatchRequestCreation()
     {
         $request = self::$jsonRequestFactory->patch('/', ['foo' => 'bar'], ['baz' => 'qux'], ['Authorization' => 'Bearer token', 'User-Agent' => 'test']);
 
@@ -96,7 +96,7 @@ class JsonRequestFactoryTest extends TestCase
         self::assertSame('test', $request->getHeaderLine('User-Agent'));
     }
 
-    public function test_delete_request_creation()
+    public function testDeleteRequestCreation()
     {
         $request = self::$jsonRequestFactory->delete('/', ['foo' => 'bar'], ['baz' => 'qux'], ['Authorization' => 'Bearer token', 'User-Agent' => 'test']);
 
@@ -108,14 +108,14 @@ class JsonRequestFactoryTest extends TestCase
         self::assertSame('test', $request->getHeaderLine('User-Agent'));
     }
 
-    public function test_request_creation_with_non_encodable_payload()
+    public function testRequestCreationWithNonEncodablePayload()
     {
         $this->expectException(InvalidBodyException::class);
 
         self::$jsonRequestFactory->createRequest('POST', '/', [], false);
     }
 
-    public function test_request_creation_with_non_encodable_character()
+    public function testRequestCreationWithNonEncodableCharacter()
     {
         $this->expectException(\JsonException::class);
 
